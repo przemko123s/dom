@@ -35,14 +35,14 @@ public class Main {
 
         System.out.println(animals);
 
-        animals.sort(new Comparator<Animal>() {
-            @Override
-            public int compare(Animal o1, Animal o2) {
-              //  return Integer.compare((o1.getAge(), o2.getAge())));
-                return 0;
-            }
-        });
+        animals.sort(Comparator.comparingInt(Animal::getAge));
+
         System.out.println(animals);
+        System.out.println(animals.isEmpty());
+        System.out.println(new ArrayList<>().isEmpty());
+
+        int index = animals.indexOf(loki);
+        System.out.println(index);
 
 
 

@@ -2,7 +2,7 @@ package collections;
 
 import java.util.Objects;
 
-public class Animal {
+public class Animal implements Comparable<Animal> {
     private String name;
     private int age;
 
@@ -12,6 +12,10 @@ public class Animal {
 
     public Animal(String name, int age) {
         this.name = name;
+        this.age = age;
+    }
+
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -28,11 +32,21 @@ public class Animal {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal animal = (Animal) o;
-        return age == animal.age && Objects.equals(name, animal.name);
+        return age == animal.age &&
+                Objects.equals(name, animal.name);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, age);
+    }
+
+    @Override
+    public int compareTo(Animal o) {
+        if (this.age != o.age) {
+            return Integer.compare(this.age, o.age);
+        } else {
+            return this.name.compareTo(o.name);
+        }
     }
 }
