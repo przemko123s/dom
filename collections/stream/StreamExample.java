@@ -95,6 +95,7 @@ public class StreamExample {
         System.out.println(employees);
 
         String[] strings = {"xd", "lol"};
+        final Stream<String> stringStream = Stream.of(strings);
         final String[] filteredStrings = Arrays
                 .stream(strings)
                 .filter(s -> s.length() > 2)
